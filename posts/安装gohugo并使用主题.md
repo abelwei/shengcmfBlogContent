@@ -194,6 +194,15 @@ hasCJKLanguage = true
 
 注意:文本里的头部 `draft: false` 草稿必须为false才能生成html显示出来.
 
+
+### 配置细节
+
+参考`./themes/LoveIt/config.toml`这个目录下的配置说明.
+
+里面有详细备注.并且这里全都是默认值.
+
+`./config.toml`这里面的配置值会替换`./themes/LoveIt/config.toml`里的值.
+
 ### 参考资料
 
 [Hugo 完整使用教程](https://www.jianshu.com/p/b979669cf706)
