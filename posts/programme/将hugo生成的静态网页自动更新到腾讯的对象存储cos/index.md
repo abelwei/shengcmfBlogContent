@@ -2,15 +2,20 @@
 title: "将hugo生成的静态网页自动更新到腾讯的对象存储cos"
 date: 2022-07-22T11:19:40+08:00
 draft: false
+categories: ["编程算法"]
+tags: ["hugo", "cos", "golang"]
 ---
 
-# 将hugo生成的静态网页自动更新到腾讯的对象存储cos
+### 申请cos并建立子帐号授权api
 
-首先需要申请腾讯的对象存储cos,并且开通静态网页功能. [对象存储 设置静态网站-控制台指南-文档中心-腾讯云](https://cloud.tencent.com/document/product/436/14984)
+1. 首先需要申请腾讯的对象存储cos,并且开通静态网页功能. [对象存储 设置静态网站-控制台指南-文档中心-腾讯云](https://cloud.tencent.com/document/product/436/14984)
+2. 自动文件更新的话就需要到cos的sdk. golang的对象存储sdk: [cos-go-sdk-v5](https://github.com/tencentyun/cos-go-sdk-v5)
+3. 申请API子帐户：个人帐户列表-访问管理-用户列表-新建用户。或者直接访问[这个链接](https://console.cloud.tencent.com/cam)（需要登录）
+4. 寻找对应的授权（可以在搜索框上搜索“cos”），我选择的是【QcloudCOSFullAccess】。创建完成后就可以复制SecretId和SecretKey到cos的sdk中调试了。
 
-自动文件更新的话就需要到cos的sdk. golang的对象存储sdk: [cos-go-sdk-v5](https://github.com/tencentyun/cos-go-sdk-v5)
+---
 
-使用sdk的话,需要api帐号,为了安全申请子帐号.
+### go-sdk方式更新文件到cos
 
 用以下程序测试更新文件:
 
@@ -103,3 +108,21 @@ func main() {
     //_, err = c.Object.PutFromFile(context.Background(), name, "./tests/ts1/main.go", opt)
 }
 ```
+
+---
+
+### 但我想更简单的方法不用花时间写程序去更新
+
+> 官方有提供coscli同步本地静态网页文件到cos，这样就不用这么花许多时间去做自动更新文件了。
+
+下载地址：[coscli下载与安装配置](https://cloud.tencent.com/document/product/436/63144)
+下载好后将coscli放到你喜欢的目录位置，然后用`./coscli config init`命令配置cos信息。
+运行配置命令之后，会向你询问相关信息。具体参考[这里](https://cloud.tencent.com/document/product/436/63144)的**配置文件中各配置项说明**
+
+![](Pasted%20image%2020230528230655.png)
+
+---
+
+使用命令同步上传文件，用命令：
+`./coscli sync public/ cos://web-1111111/test/ -r`
+同步上传到cos的桶上，[说明参考这里](https://cloud.tencent.com/document/product/436/63670)。

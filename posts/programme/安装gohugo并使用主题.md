@@ -108,7 +108,6 @@ hasCJKLanguage = true
 
 当你运行了 `hugo serve` 命令的时候发现显示不了创建的文章.是因为默认的时候,所有的文章都是草稿没发布的,你需要用 `hugo serve -D` 命令.
 
-
 ### 标签和分类
 
 标签和分类都是在config.toml中默认存在的.
@@ -117,7 +116,7 @@ hasCJKLanguage = true
 
 要想在页面上的标签列表中列出文章,需要在文章头部信息那里写上`tags: ["c", "ccc"]``.<u>重新启动刷新就能看到</u>
 
-### 页面菜单项
+### 页面菜单项
 
 页面头部菜单列表,需要在config.toml配置文件中设置.
 
@@ -156,7 +155,7 @@ hasCJKLanguage = true
 
 添加文章用命令行`hugo new posts/first.md`, 会出现在文章列表下.
 
-###### 如果需要特别指定专题目录需要config.toml配置两项:
+###### 如果需要特别指定专题目录需要config.toml配置两项:
 
 ```toml
 [taxonomies]
@@ -193,7 +192,6 @@ hasCJKLanguage = true
 直接用`hugo`命令就行了.
 
 注意:文本里的头部 `draft: false` 草稿必须为false才能生成html显示出来.
-
 
 ### 配置细节
 
