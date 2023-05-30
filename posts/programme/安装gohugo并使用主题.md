@@ -2,6 +2,8 @@
 title: "安装gohugo并使用主题"
 date: 2022-07-22T15:52:02+08:00
 draft: false
+categories: ["编程算法"]
+tags: ["hugo", "LoveIt"]
 ---
 
 # 安装gohugo并使用主题

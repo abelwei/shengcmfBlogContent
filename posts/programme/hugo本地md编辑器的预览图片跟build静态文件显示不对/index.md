@@ -2,6 +2,7 @@
 title: "hugo本地md编辑器的预览图片跟build静态文件显示不对"
 date: 2023-05-29T09:58:58+08:00
 draft: false
+categories: ["编程算法"]
 tags: ["hugo", "MarkText"]
 ---
 
